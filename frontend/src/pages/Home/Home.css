@@ -34,3 +34,75 @@
   padding: 15.5px 36px;
   border-radius: 12px;
 }
+
+.chooseUs-div{
+  padding-top: 90px;
+  padding-bottom: 180px;
+  background-color: #00000033;
+  gap: 80px;
+}
+
+.chooseUs-div-two{
+  gap: 32px;
+}
+
+.chooseUs-div-one > h1{
+  color: white;
+  font-size: 60px;
+  line-height: 80px;
+}
+
+.choose-us-img-one >h3{
+  font-size: 25px;
+  color: white;
+}
+
+.choose-us-img-one >h4{
+  font-size: 20px;
+  color:#9992A4;
+}
+
+.choose-us-img-one > img{
+  width: 192px;
+}
+
+.choose-us-img-two{
+    margin-top: 60px;
+}
+
+.choose-us-img-two >h3{
+  font-size: 25px;
+  color: white;
+}
+
+.choose-us-img-two >h4{
+  font-size: 20px;
+  color:#9992A4;
+}
+
+.choose-us-img-two > img{
+  width: 192px;
+}
+
+.choose-us-img-three >h3{
+  font-size: 25px;
+  color: white;
+}
+
+.choose-us-img-three >h4{
+  font-size: 20px;
+  color:#9992A4;
+}
+
+.choose-us-img-three > img{
+  width: 192px;
+}
+
+.box-border{
+  background-color: #1E1A23;
+  border-radius: 4%;
+  height: 400px;
+  width: 380px;
+  padding: 40px;
+  gap: 10px;
+}
