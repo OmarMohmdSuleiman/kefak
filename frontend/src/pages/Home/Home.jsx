@@ -67,6 +67,8 @@ function Home() {
 
         </div>
 
+        {/*Contact Us*/}
+
         <div className="contact-us-div flex center">
         <img className="telephone-img" src={telephoneImg} alt="" />
         <img className="email-img" src={emailImg} alt="" />
