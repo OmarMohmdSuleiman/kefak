@@ -18,13 +18,19 @@ function Login() {
             </div>
 
             <div className="div-form-two">
-              <form className="form-two flex column">
+              <form className="form-two flex column center">
                 <input
+                  type="email"
                   className=""
                   placeholder="example@gmail.com"
                   required
                 ></input>
-                <input className="" placeholder="•••••••••••" required></input>
+                <input
+                  type="password"
+                  className=""
+                  placeholder="•••••••••••"
+                  required
+                ></input>
                 <h4>Remember me</h4>
                 <button type="submit">Login</button>
               </form>

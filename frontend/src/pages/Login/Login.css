@@ -12,11 +12,16 @@
   width: 165px;
 }
 
+.user-img > img {
+  width: 50px;
+}
+
 .login-div-two {
   background-color: #00000033;
   width: 620px;
-  height: 65%;
+  height: 70%;
   margin: 0 auto;
+  border-radius: 6px;
 }
 
 .login-div-two > img {
@@ -24,9 +29,10 @@
 }
 
 .login-div-two-form {
+  width: 310px;
   margin: 0 auto;
-  padding-top: 30px;
-  gap: 30px;
+  padding-top: 20px;
+  gap: 10px;
 }
 
 .div-form-two {
@@ -38,6 +44,7 @@
   gap: 20px;
 }
 .form-two > input {
+  width: 90%;
   border: none;
   border-bottom: 1px solid #565656;
   padding: 5px;
@@ -60,6 +67,8 @@
   height: 40px;
   font-size: 20px;
   border-radius: 7px;
+  width: 80%;
+  margin: auto;
 }
 
 .div-google {
@@ -88,4 +97,5 @@
   font-weight: bold;
   font-size: 12px;
   border-radius: 7px;
+  width: 80%;
 }
