@@ -35,71 +35,71 @@
   border-radius: 12px;
 }
 
-.chooseUs-div{
+.chooseUs-div {
   padding-top: 90px;
   padding-bottom: 180px;
   background-color: #00000033;
   gap: 80px;
 }
 
-.chooseUs-div-two{
+.chooseUs-div-two {
   gap: 32px;
 }
 
-.chooseUs-div-one > h1{
+.chooseUs-div-one > h1 {
   color: white;
   font-size: 60px;
   line-height: 80px;
 }
 
-.choose-us-img-one >h3{
+.choose-us-img-one > h3 {
   font-size: 25px;
   color: white;
 }
 
-.choose-us-img-one >h4{
+.choose-us-img-one > h4 {
   font-size: 20px;
-  color:#9992A4;
+  color: #9992a4;
 }
 
-.choose-us-img-one > img{
+.choose-us-img-one > img {
   width: 192px;
 }
 
-.choose-us-img-two{
-    margin-top: 60px;
+.choose-us-img-two {
+  margin-top: 60px;
 }
 
-.choose-us-img-two >h3{
+.choose-us-img-two > h3 {
   font-size: 25px;
   color: white;
 }
 
-.choose-us-img-two >h4{
+.choose-us-img-two > h4 {
   font-size: 20px;
-  color:#9992A4;
+  color: #9992a4;
 }
 
-.choose-us-img-two > img{
+.choose-us-img-two > img {
   width: 192px;
 }
 
-.choose-us-img-three >h3{
+.choose-us-img-three > h3 {
   font-size: 25px;
   color: white;
 }
 
-.choose-us-img-three >h4{
+.choose-us-img-three > h4 {
   font-size: 20px;
-  color:#9992A4;
+  color: #9992a4;
 }
 
-.choose-us-img-three > img{
+.choose-us-img-three > img {
   width: 192px;
 }
 
-.box-border{
-  background-color: #1E1A23;
+.box-border {
+  background-color: #1e1a23;
   border-radius: 4%;
   height: 400px;
   width: 380px;
@@ -107,7 +107,7 @@
   gap: 10px;
 }
 
-.about-us-div{
+.about-us-div {
   justify-content: center;
   width: 100%;
   height: 100vh;
@@ -115,26 +115,26 @@
   gap: 90px;
 }
 
-.about-us-div-one >img{
+.about-us-div-one > img {
   width: 600px;
   transform: rotate(-14deg);
 }
 
-.about-us-div-two{
+.about-us-div-two {
   gap: 30px;
 }
 
-.about-us-div-two > h1{
+.about-us-div-two > h1 {
   font-size: 60px;
-  color:white
+  color: white;
 }
 
-.about-us-div-two > h3{
+.about-us-div-two > h3 {
   font-size: 30px;
-  color: #9992A4;
+  color: #9992a4;
 }
 
-.contact-us-div{
+.contact-us-div {
   background-color: #00000033;
   width: 80%;
   border-radius: 10%;
@@ -143,20 +143,20 @@
   margin: 0 auto;
 }
 
-.contact-us-div-one{
-  gap:40px
+.contact-us-div-one {
+  gap: 40px;
 }
 
-.contact-us-div-one >h1{
+.contact-us-div-one > h1 {
   font-size: 60px;
   color: white;
 }
 
-.contact-us-div-one > form{
+.contact-us-div-one > form {
   gap: 30px;
 }
 
-.form-one{
+.form-one {
   background-color: #1e1a23;
   border: none;
   width: 500px;
@@ -166,38 +166,38 @@
   color: white;
 }
 
-.input{
+.input {
   height: 65px;
 }
 
-.textarea{
+.textarea {
   height: 165px;
 }
-.contact-us-div-one form >button{
-  background-color: #9747FF;
+.contact-us-div-one form > button {
+  background-color: #9747ff;
   height: 65px;
   font-size: 30px;
   font-weight: bold;
   color: white;
 }
 
-.contact-us-div-two >img{
+.contact-us-div-two > img {
   width: 400px;
   transform: rotate(14deg);
 }
 
-.contact-us-div > img{
+.contact-us-div > img {
   position: absolute;
 }
 
-.telephone-img{
+.telephone-img {
   top: 315%;
-  left:85%;
+  left: 85%;
   width: 150px;
 }
 
-.email-img{
-  top:415%;
+.email-img {
+  top: 415%;
   right: 85%;
   transform: rotate(-20deg);
   width: 150px;
