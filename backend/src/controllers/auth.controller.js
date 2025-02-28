@@ -68,3 +68,30 @@ export async function register(req,res){
 
 }
 
+
+export async function login(req,res){
+    const {email,password}=req.body;
+
+    if(!email || !password){
+        return res.send({
+            message:"No email or no password"
+        })
+    }
+
+    try{
+        const user =await User.findOne({email});
+        if(!user){
+            return res.status(400).send("Not found...");
+        }
+        if(user.password !== password){
+            return res.status(400).send("Incorrect pass...");
+        }
+        res.send({
+            message:"Successfully Logged in...",
+            fname:user.firstName
+        })
+    }catch(error){
+        res.status(500).send("Internal Server Error");
+    }
+
+}
