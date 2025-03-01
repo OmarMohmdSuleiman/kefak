@@ -1,0 +1,44 @@
+.Navbar{
+    position:absolute ;
+    width: 90%;
+    left: 5%;
+    background-color: bisque;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 285px;
+    margin-top: 20px;
+    padding: 20px;
+    align-items: center;
+    background-color: #00000033;
+    border-radius: 20px;
+
+} 
+
+
+.Navbar-logo > img{
+    margin-top: 3px;
+    width: 150px;
+}
+
+.Navbar-href{
+    gap: 40px;
+}
+
+.Navbar-href > a{
+    font-size: 30px;
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+
+}
+
+
+.Navbar-login-btn > button{
+    background-color: #9747FF;
+    width: 160px;
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    border-radius: 15px;
+}
