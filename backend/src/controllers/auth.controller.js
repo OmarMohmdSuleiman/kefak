@@ -34,7 +34,7 @@ export async function register(req,res){
     const{firstName,lastName,email,password}= req.body;
 
     if(!firstName || !email || !password){
-        res.send({
+        return res.send({
             message:"Missing..."
         });
     }
@@ -50,20 +50,20 @@ export async function register(req,res){
         firstName,
         lastName,
         email,
-        password 
+        password
     });
     
     await newUser.save();
 
-    res.send({
+    res.status(201).send({
         message:"Registered successfully",
         firstName,
         lastName,
-        email,
-        password
+        email
     })
     }catch(error){
-    res.status(500).send("Internal Server Error");
+    console.log(error.message);
+    return res.status(500).send("Internal Server Error");
     }
 
 }
@@ -74,7 +74,7 @@ export async function login(req,res){
 
     if(!email || !password){
         return res.send({
-            message:"No email or no password"
+            message:"Missing credential..."
         })
     }
 
@@ -84,14 +84,15 @@ export async function login(req,res){
             return res.status(400).send("Not found...");
         }
         if(user.password !== password){
-            return res.status(400).send("Incorrect pass...");
+            return res.status(400).send("Incorrect credential...");
         }
-        res.send({
+        return res.send({
             message:"Successfully Logged in...",
             fname:user.firstName
         })
     }catch(error){
-        res.status(500).send("Internal Server Error");
+        console.log(error.message);
+        return res.status(500).send("Internal Server Error");
     }
 
 }
