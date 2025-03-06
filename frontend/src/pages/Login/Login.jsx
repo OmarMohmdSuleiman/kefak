@@ -27,7 +27,8 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Nice");
+        console.log(`Nice, welcome ${data.firstName}`);
+        localStorage.setItem("authToken", data.token)
         
         setuserFirstName(data.firstName);  
         setIsLoggedIn(true); 
