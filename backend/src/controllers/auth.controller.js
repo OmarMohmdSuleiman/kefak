@@ -1,4 +1,12 @@
 import User from "../models/user.model.js";
+import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+
+dotenv.config();
+
+const JWT_SECRET=process.env.JWT_SECRET
+
 
 export function hello(req,res){
     res.send("It works");
@@ -33,6 +41,7 @@ export function addPerson(req,res){
 export async function register(req,res){
     const{firstName,lastName,email,password}= req.body;
 
+
     if(!firstName || !email || !password){
         return res.send({
             message:"Missing..."
@@ -45,12 +54,14 @@ export async function register(req,res){
             return res.status(400).send("Email already registered");
         }
     
+    const salt=10;
+    const hashedPass= await bcrypt.hash(password, salt);
 
     const newUser = new User({
         firstName,
         lastName,
         email,
-        password
+        password:hashedPass
     });
     
     await newUser.save();
@@ -59,7 +70,8 @@ export async function register(req,res){
         message:"Registered successfully",
         firstName,
         lastName,
-        email
+        email,
+        password:hashedPass
     })
     }catch(error){
     console.log(error.message);
@@ -70,7 +82,7 @@ export async function register(req,res){
 
 
 export async function login(req,res){
-    const {email,password}=req.body;
+    const {email,password,}=req.body;
 
     if(!email || !password){
         return res.send({
@@ -83,12 +95,20 @@ export async function login(req,res){
         if(!user){
             return res.status(400).send("Not found...");
         }
-        if(user.password !== password){
+        const validPass=await bcrypt.compare(password,user.password);
+        if(!validPass){
             return res.status(400).send("Incorrect credential...");
         }
+        const token=jwt.sign(
+            {id:user._id,email:user.email,fname:user.firstName},
+            JWT_SECRET
+        );
+
         return res.send({
             message:"Successfully Logged in...",
-            fname:user.firstName
+            fname:user.firstName,
+            password:user.password,
+            token
         })
     }catch(error){
         console.log(error.message);
