@@ -1,4 +1,4 @@
-//import React from "react";
+import PropTypes from "prop-types";
 import "./Home.css";
 import HomeImg from "../../assets/images/home-img.png";
 import AboutusImg from "../../assets/images/about-us-img.png";
@@ -6,10 +6,12 @@ import CommunicateImg from "../../assets/images/communicate-img.png";
 import telephoneImg from "../../assets/images/telephone-img.png";
 import emailImg from "../../assets/images/email-img.png";
 
-function Home() {
+function Home({homeRef,aboutRef,contactRef}) {
+  
+  
   return (
     <>
-      <div className="home-div flex center">
+      <div ref={homeRef}  className="home-div flex center">
         <div className="home-div-one">
           <h1>💬 Connect, Chat, and Stay Close!</h1>
           <h3>Instant messaging, voice, and video calls all in one place.</h3>
@@ -49,7 +51,7 @@ function Home() {
       </div>
 
       {/*About Us*/}
-      <div className="about-us-div flex ">
+      <div ref={aboutRef} className="about-us-div flex ">
         <div className="about-us-div-one">
           <img src={AboutusImg} alt="" />
         </div>
@@ -69,7 +71,7 @@ function Home() {
 
       {/*Contact Us*/}
 
-      <div className="contact-us-div flex center">
+      <div ref={contactRef} className="contact-us-div flex center">
         <img className="telephone-img" src={telephoneImg} alt="" />
         <img className="email-img" src={emailImg} alt="" />
 
@@ -98,4 +100,10 @@ function Home() {
   );
 }
 
+
+Home.propTypes = {
+  homeRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  aboutRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // Ensures aboutRef is a valid ref
+  contactRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }), // Ensures contactRef is a valid ref
+};
 export default Home;
