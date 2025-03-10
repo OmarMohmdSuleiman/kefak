@@ -27,10 +27,10 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log(`Nice, welcome ${data.firstName}`);
+        console.log(`Nice, welcome ${data.fname}`);
         localStorage.setItem("authToken", data.token)
         
-        setuserFirstName(data.firstName);  
+        setuserFirstName(data.fname);  
         setIsLoggedIn(true); 
       } else {
         setError(data.message || "Login failed");
@@ -50,7 +50,7 @@ function Login() {
         <div className="login-div-two flex ">
           <img src={LoginImg} alt="" />
           <div className="login-div-two-form flex column t-center">
-          {isLoggedIn && userfirstName ? ( 
+          {isLoggedIn  ? ( 
             <h1>Welcome, {userfirstName}!</h1>
           ) : (
             <>

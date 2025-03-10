@@ -1,9 +1,15 @@
 import "./Navbar.css";
 import AppLogoImg from "../../assets/images/App-logo.png";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 
 function Navbar({ scrollToSection }){
+    const navigate=useNavigate();
+
+    const handleClick = ()=>{
+        navigate("/login")
+    }
     
     return(
         <div className="Navbar flex t-center">
@@ -16,7 +22,7 @@ function Navbar({ scrollToSection }){
                 <button onClick={() => scrollToSection("contact")} >Contact Us</button>
             </div>
             <div className="Navbar-login-btn">
-                <button>Log in</button>
+                <button onClick={handleClick}>Log in</button>
             </div>
         </div>
 
