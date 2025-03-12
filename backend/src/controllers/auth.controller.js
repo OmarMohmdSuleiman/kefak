@@ -39,12 +39,18 @@ export function addPerson(req,res){
 }
 
 export async function register(req,res){
-    const{firstName,lastName,email,password}= req.body;
+    const{firstName,lastName,email,password,confirmPassword}= req.body;
 
 
-    if(!firstName || !email || !password){
+    if(!firstName || !email || !password || !confirmPassword){
         return res.send({
             message:"Missing..."
+        });
+    }
+
+    if (password !== confirmPassword) {
+        return res.status(400).send({
+            message: "Passwords do not match"
         });
     }
 
