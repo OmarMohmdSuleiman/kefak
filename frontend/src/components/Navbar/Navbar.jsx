@@ -2,10 +2,13 @@ import "./Navbar.css";
 import AppLogoImg from "../../assets/images/App-logo.png";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 
 function Navbar({ scrollToSection }){
     const navigate=useNavigate();
+    const {user}=useContext(AuthContext);
 
     const handleClick = ()=>{
         navigate("/login")
@@ -22,7 +25,14 @@ function Navbar({ scrollToSection }){
                 <button onClick={() => scrollToSection("contact")} >Contact Us</button>
             </div>
             <div className="Navbar-login-btn">
-                <button onClick={handleClick}>Log in</button>
+                {user? (
+                    <button>{user.name}</button> ) :
+
+                (
+                    <button onClick={handleClick}>Log in</button>
+                )
+                }
+                
             </div>
         </div>
 

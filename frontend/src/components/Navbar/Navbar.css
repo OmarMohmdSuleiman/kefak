@@ -24,12 +24,13 @@
     gap: 40px;
 }
 
-.Navbar-href > a{
-    font-size: 30px;
+.Navbar-href > button{
+    font-size: 25px;
     text-decoration: none;
     color:white;
     font-weight: bold;
-
+    background-color: transparent;
+    
 }
 
 

@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 import "./Home.css";
 import HomeImg from "../../assets/images/home-img.png";
 import AboutusImg from "../../assets/images/about-us-img.png";
@@ -7,7 +9,7 @@ import telephoneImg from "../../assets/images/telephone-img.png";
 import emailImg from "../../assets/images/email-img.png";
 
 function Home({homeRef,aboutRef,contactRef}) {
-  
+  const {user}=useContext(AuthContext);
   
   return (
     <>
@@ -15,7 +17,11 @@ function Home({homeRef,aboutRef,contactRef}) {
         <div className="home-div-one">
           <h1>💬 Connect, Chat, and Stay Close!</h1>
           <h3>Instant messaging, voice, and video calls all in one place.</h3>
-          <button>Sign Up for Free</button>
+          {user ? (
+            <button>You Already signed in now</button>
+          ):(
+            <button>Sign Up for Free</button>
+          )}
         </div>
 
         <div className="home-div-two">

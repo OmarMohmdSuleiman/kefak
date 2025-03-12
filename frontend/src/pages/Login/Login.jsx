@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import AuthContext from "../../context/AuthContext";
 import ApplogoImg from "../../assets/images/App-logo.png";
 import LoginImg from "../../assets/images/login-img.jpg";
 import LoginUserImg from "../../assets/images/login-user-img.png";
 
 function Login() {
   
+  const navigate=useNavigate();
+  const { setUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,7 +31,9 @@ function Login() {
 
       if (response.ok) {
         console.log(`Nice, welcome ${data.fname}`);
-        localStorage.setItem("authToken", data.token)
+        localStorage.setItem("authToken", data.token);
+        setUser({ name: data.fname });
+        //navigate("/");
         
         setuserFirstName(data.fname);  
         setIsLoggedIn(true); 
