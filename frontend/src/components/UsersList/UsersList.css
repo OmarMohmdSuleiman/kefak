@@ -1,0 +1,80 @@
+.users-list{
+    color: white;
+    background-color: #00000033;
+    height: 85vh;
+    width:27%;
+    border-radius: 5%;
+    
+}
+
+.users-list-div-one{
+    border-bottom: 1px solid #565656;
+    margin-bottom: 15px;
+    gap: 80px;
+    padding: 20px;
+    align-items: center;
+}
+
+.users-list-div-one > img{
+    width: 100px;
+    height: 50px;
+
+}
+
+.users-list-div-one-imgs{
+    padding-left: 70px;
+    gap: 20px;
+}
+
+.users-list-div-one-imgs >img{
+    width: 25px;
+    height: 25px;
+}
+
+.users-list-div-two{
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.user-img >img{
+    width: 70px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+.contact-x{
+    gap: 10px;
+    width: 50%;
+}
+
+.contact-x .name{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contact-x .messsge{
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.time{
+    padding-left: 50px;
+    color: #565656;
+}
+
+.users-list-div-three{
+    border-top:1px solid #565656 ;
+    padding: 20px;
+    gap: 50px;
+}
+
+.below-imgs{
+    gap: 10px;
+}
+
+.below-imgs >img{
+    width: 60px; 
+}
+
+.below-imgs p{
+    color: #565656;
+}
