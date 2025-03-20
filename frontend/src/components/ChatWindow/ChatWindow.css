@@ -1,0 +1,76 @@
+.chat-window{
+    height: 95vh;
+    width: 55%;
+    background-color: #00000033;
+    border-radius: 5%;
+    padding: 20px;
+}
+
+.chat-window-div-one{
+    align-items: center;
+    padding: 20px 0px 20px 0px;
+    justify-content: center;
+}
+.chat-window-contact{
+    align-items: center;
+    width: 80%;
+    gap: 20px;
+    border-left: 1px solid #9747FF;
+    border-bottom: 1px solid #9747FF;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+}
+
+.chat-window-contact >img{
+    width: 90px;
+    height: 90px;
+}
+
+.chat-window-contact >h2{
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+}
+
+.chat-window-contact-imgs{
+    gap: 25px;
+    margin-left: 25px;
+}
+
+.chat-window-contact-imgs >img{
+    width: 50px;
+    height: 50px;
+}
+
+.chat-window-div-two{
+    height: 70vh;
+    border-left: solid 1px #9747FF;
+    border-right: solid 1px #9747FF;
+}
+
+.chat-window-div-three{
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+
+.chat-window-div-three >button{
+    background-color: transparent;
+    
+}
+
+.chat-window-div-three >form{
+    width: 80%;
+}
+
+input{
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+button img{
+    width: 50px;
+}
