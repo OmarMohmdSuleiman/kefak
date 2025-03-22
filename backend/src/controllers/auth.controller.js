@@ -85,8 +85,7 @@ export async function register(req,res){
         message:"Registered successfully",
         firstName,
         lastName,
-        email,
-        password:hashedPass
+        email
     })
     }catch(error){
     console.log(error.message);
@@ -122,7 +121,6 @@ export async function login(req,res){
         return res.send({
             message:"Successfully Logged in...",
             fname:user.firstName,
-            password:user.password,
             token
         })
     }catch(error){
