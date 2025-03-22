@@ -8,6 +8,8 @@ dotenv.config();
 const JWT_SECRET=process.env.JWT_SECRET
 
 
+
+
 export function hello(req,res){
     res.send("It works");
 }
@@ -54,7 +56,14 @@ export async function register(req,res){
         });
     }
 
+    if(!ValidateEmail(email)){
+        return res.status(400).send({
+            message:"This is not in email form..."
+        });
+    }
+
     try{
+
         const existedUser= await User.findOne({email});
         if(existedUser){
             return res.status(400).send("Email already registered");
@@ -120,5 +129,12 @@ export async function login(req,res){
         console.log(error.message);
         return res.status(500).send("Internal Server Error");
     }
+
+}
+
+
+function ValidateEmail(email){
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
 
 }
