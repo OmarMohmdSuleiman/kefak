@@ -17,10 +17,17 @@ export async function sendMessage(req,res){
     }
 
     try{
-        const chat=await Chat.find({chat_id});
+        const chat=await Chat.findById(chat_id);
         if(!chat){
             return res.status(400).send({
                 message:"No available chat..."
+            })
+        }
+
+        const sender=await User.findById(sender_id);
+        if(!sender){
+            res.status(400).send({
+                message:"Sender is not found"
             })
         }
         
@@ -29,11 +36,14 @@ export async function sendMessage(req,res){
             reciever: reciever_id,
             message: content
         }
+        
+        
 
-        const messages = Chat.messages;
-        messages.push(new_message);
+       chat.messages.push(new_message);
+       await chat.save();
         return res.send({
             sender: sender_id,
+            sender_name:sender.firstName,
             reciever: reciever_id,
             message: content
         })
@@ -59,10 +69,33 @@ export async function addChat(req,res){
         })
         return res.send({
             user_one:logged_in_id,
-            user_two: chat_user._id 
+            user_two: chat_user._id ,
+            chat_user:chat_user.email
         })
     } catch (error) {
         console.log(error.message);
+        return res.status(500).send("Internal Server Error");
+        }
+    }
+
+    export async function getChats(req,res){
+        const {user_id}=req.params;
+        if(!mongoose.Types.ObjectId.isValid(user_id) ){
+            return res.status(400).send({
+                message:"ID is of invalid format..."
+            })
+        }
+        try {
+            const chats=await Chat.find({user_one:user_id})
+            .populate("user_two", "firstName");
+        
+            return res.send({
+                chats,
+                
+            })
+            
+        } catch (error) {
+            console.log(error.message);
         return res.status(500).send("Internal Server Error");
         }
     }

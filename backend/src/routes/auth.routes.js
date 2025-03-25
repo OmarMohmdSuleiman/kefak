@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { hello,bye,addUser,addPerson,register,login } from "../controllers/auth.controller.js";
-import {sendMessage,addChat} from "../controllers/chat.controller.js";
+import {sendMessage,addChat,getChats} from "../controllers/chat.controller.js";
 
 
 const authRouter=new Router();
@@ -13,6 +13,7 @@ authRouter.post("/register",register);
 authRouter.post("/login",login);
 authRouter.post("/sendMessage",sendMessage);
 authRouter.post("/addChat",addChat);
+authRouter.get("/getChats/:user_id",getChats);
 
 
 
