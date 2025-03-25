@@ -7,6 +7,8 @@ import ChatImg from "../../assets/images/chat-img.png";
 import StatusImg from "../../assets/images/status-img.png";
 import TelefoneImg from "../../assets/images/telephone-img.png";
 import UserImg from "../../assets/images/chat-user-img.png";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 
 
@@ -26,14 +28,50 @@ const users=[
 ]
 
 function UsersList(){
+
+    const [open,setOpen]=useState(false);
+
+    
+    
+    const onSubmit = () => {
+        alert(`Email is Added successfully...`);
+        setOpen(false);
+    };
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+      } = useForm();
     return (
         <div className="users-list flex column">
             <div className="users-list-div-one flex">
                 <img src={AppLogoImg} alt="" />
                 <div className="users-list-div-one-imgs flex">
-                <img src={CameraImg} alt="" />
-                <img src={SearchImg} alt="" />
-                <img src={MenuImg} alt="" />
+                <button><img src={CameraImg} alt="" /></button>
+                <button><img src={SearchImg} alt="" /></button>
+                <button onClick={() => setOpen(true)}><img src={MenuImg} alt="" /></button>
+                {open && (
+                    <div className="blur_div">
+                        <form className="popup-form flex column center">
+                            <label>Add email</label>
+                            <input
+                            type="email"
+                            className=""
+                            placeholder="example@gmail.com"
+                            
+                      {...register("email", { required: "Email is required" })}
+                      required
+                            />
+                            {errors.email && (
+                      <p style={{ color: "red" }}>{errors.email.message}</p>
+                    )}
+                            <button onClick={onSubmit} type="submit">Add Contact</button>
+                            <button onClick={() => setOpen(false)} >Close</button>
+                        </form>
+                    </div>
+                )}
                 </div>
 
             </div>
