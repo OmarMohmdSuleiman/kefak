@@ -18,6 +18,7 @@ export async function sendMessage(req,res){
 
     try{
         const chat=await Chat.findById(chat_id);
+        
         if(!chat){
             return res.status(400).send({
                 message:"No available chat..."
@@ -28,6 +29,12 @@ export async function sendMessage(req,res){
         if(!sender){
             res.status(400).send({
                 message:"Sender is not found"
+            })
+        }
+        const reciever=await User.findById(reciever_id);
+        if(!reciever){
+            res.status(400).send({
+                message:"Receiver is not found"
             })
         }
         
@@ -45,6 +52,7 @@ export async function sendMessage(req,res){
             sender: sender_id,
             sender_name:sender.firstName,
             reciever: reciever_id,
+            reciever_name:reciever.firstName,
             message: content
         })
 
@@ -55,22 +63,39 @@ export async function sendMessage(req,res){
 }
 
 export async function addChat(req,res){
-    const {email,logged_in_id}=req.body;
-    // Validate email form
+    const {userTwo_email,logged_in_id}=req.body;
 
-    // Make sure email is in db
+    
+    
 
     try {
-        const chat_user=await User.findOne({email});
-        const chat=await Chat.create({
+        const user_two=await User.findOne({email:userTwo_email});
+        console.log("User email to search:", userTwo_email);
+        if(!user_two){
+            return res.status(404).send({
+                message:"Email is not found..."
+            })
+        }
+        const existingChat = await Chat.findOne({
+            $or: [
+                { user_one:logged_in_id, user_two: user_two._id},  
+                { user_one: user_two._id,user_two: logged_in_id}
+            ]
+        });
+        if(existingChat){
+            return res.status(400).send({
+                message:"Chat already exists..."
+            })
+        }
+        await Chat.create({
             user_one:logged_in_id,
-            user_two: chat_user._id
+            user_two: user_two._id
 
         })
         return res.send({
             user_one:logged_in_id,
-            user_two: chat_user._id ,
-            chat_user:chat_user.email
+            user_two_id: user_two._id ,
+            user_two:user_two.email
         })
     } catch (error) {
         console.log(error.message);
@@ -98,5 +123,34 @@ export async function addChat(req,res){
             console.log(error.message);
         return res.status(500).send("Internal Server Error");
         }
+    }
+
+    export async function getChat(req,res){
+        const {user_id}=req.params;
+        if(!mongoose.Types.ObjectId.isValid(user_id) ){
+            return res.status(400).send({
+                message:"ID is of invalid format..."
+            })
+        }
+        try {
+            const chats=await Chat.find({
+                user_two:user_id
+            })
+            .populate('user_one', 'firstName email')  
+            .populate('user_two', 'firstName email');
+
+            return res.send({chats});
+           
+            
+        } catch (error) {
+            console.log(error.message);
+            return res.status(500).send("Internal Server Error");
+        }
+    }
+
+    function ValidateEmail(email){
+        const regex =/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
+    
     }
 
