@@ -33,10 +33,7 @@ function UsersList(){
 
     
     
-    const onSubmit = () => {
-        alert(`Email is Added successfully...`);
-        setOpen(false);
-    };
+    
 
     const {
         register,
@@ -44,6 +41,12 @@ function UsersList(){
         formState: { errors },
         reset,
       } = useForm();
+
+      const onSubmit = () => {
+        alert(`Email  is Added successfully...`);
+        setOpen(false);
+        reset();
+    };
     return (
         <div className="users-list flex column">
             <div className="users-list-div-one flex">
@@ -54,20 +57,23 @@ function UsersList(){
                 <button onClick={() => setOpen(true)}><img src={MenuImg} alt="" /></button>
                 {open && (
                     <div className="blur_div">
-                        <form className="popup-form flex column center">
+                        <form className="popup-form flex column center" onSubmit={handleSubmit(onSubmit)}>
                             <label>Add email</label>
                             <input
                             type="email"
                             className=""
                             placeholder="example@gmail.com"
                             
-                      {...register("email", { required: "Email is required" })}
-                      required
+                        {...register("email", { required: "Email is required", pattern: {
+                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                            message: "Invalid email format",
+                        }, })}
+                            
                             />
-                            {errors.email && (
-                      <p style={{ color: "red" }}>{errors.email.message}</p>
+                        {errors.email && (
+                            <p style={{ color: "red" }}>{errors.email.message}</p>
                     )}
-                            <button onClick={onSubmit} type="submit">Add Contact</button>
+                            <button  type="submit">Add Contact</button>
                             <button onClick={() => setOpen(false)} >Close</button>
                         </form>
                     </div>
